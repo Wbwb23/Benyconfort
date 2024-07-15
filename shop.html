@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beny Confort</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="icon" type="image/png" href="img/2logo.png">
+</head>
+<body>
+    <section id="header">
+        <a href="index.html"><img src="img/logoblack.png" class="logo" alt=""></a>
+                <button class="burger" onclick='document.querySelector("#navbar").classList.toggle("nav-active");'>
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+           <div> <ul id="navbar">
+                <li><a  href="index.html">accueil</a></li>
+                <li ><a class="active" href="shop.html">shop</a></li>
+                <li ><a  href="contact.html">contact</a></li>
+                <li><a  href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+
+            </ul></div>
+        
+    </section>
+    <div class="loading">
+        <i class="fa-solid fa-spinner" style="font-size: 30px; color: #1E2A47; width: 50px; height: 50px;"></i>
+    </div>
+    <section id="produits"><h1>nos Chaussures</h1>
+        <div class="pro_container">
+         
+        </div>
+    </section>
+    <section id="banner">
+        <h2>إستفد الآن من تخفيضات تصل إلى <span>%70  </span></h2>
+    </section>
+    <section id="produits"><h1>nos Chaussures</h1>
+        <div class="promo_container">
+            
+
+        </div>
+    </section>
+    <section id="footer">
+
+<div>
+    <h1>informations:</h1>
+    
+    <a href="quiSommesNous.html">Qui Sommes-Nous.</a><a href="methodeDePaiement.html">Methode de paiement.</a><a href="livraison.html">Service De Livraison.</a>
+</div>
+<div>
+    <h1>politique:</h1>
+    <a href="conditions.html">Termes et conditions.</a><a href="quiSommesNous.html">aide.</a>
+</div>
+<div>
+<h1>contact:</h1>
+<a href="tel:0549609124"><i class="fa-solid fa-phone">:</i>0549609124</a><a href="mailto: walidwalidwb23@gmail.com"><i class="fa-solid fa-envelope">:</i>walidwalidwb23@gmail.com</a>
+</div>
+<div>
+    <img src="img/logowhite.png" alt="">
+</div>
+    </section>
+</body>
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+<script type="module">
+  const firebaseConfig = {
+    apiKey: "AIzaSyDFo7KYOySMzR70zUftjUsA4UkjYCK9PaE",
+    authDomain: "beny-comf.firebaseapp.com",
+    projectId: "beny-comf",
+    storageBucket: "beny-comf.appspot.com",
+    messagingSenderId: "409498301906",
+    appId: "1:409498301906:web:5dc9319dd2868f9f3d040b"
+  };
+
+  const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore(app);
+
+
+const querySnapshot = await db.collection('products').get();
+querySnapshot.forEach((doc) => {
+  let data = doc.data();
+  if(data.promo) document.querySelector(".promo_container").innerHTML += ` <div class="pro"  onclick="window.location.href='sproduct.html?id=${doc.id}';">
+                <img src="${data.image}" alt="">
+                <div class="des"><span>${data.marque}</span>
+                <h5>${data.name}</h5>
+                <h4><span>${data.prix}Da</span> ${data.promo}da</h4>
+            </div>
+            <BUtton>VOIR PLUS</BUtton>
+            </div>`;
+document.querySelector(".pro_container").innerHTML += ` <div class="pro"  onclick="window.location.href='sproduct.html?id=${doc.id}';">
+                <img src="${data.image}" alt="">
+                <div class="des"><span>${data.marque}</span>
+                <h5>${data.name}</h5>
+                ${data.promo? `<h4><span>${data.prix}Da</span> ${data.promo}da</h4>` : `<h4>${data.prix}Da</h4>`}
+            </div>
+            <BUtton>VOIR PLUS</BUtton>
+            </div>`
+});
+document.querySelector('.loading').style.display = 'none';
+</script>
+</html>

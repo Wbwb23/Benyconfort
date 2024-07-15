@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beny Confort</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="icon" type="image/png" href="img/2logo.png">
+</head>
+<body>
+      <div class="loading">
+        <i class="fa-solid fa-spinner" style="font-size: 30px; color: #1E2A47; width: 50px; height: 50px;"></i>
+    </div>
+    <section id="header">
+        <a href="index.html"><img src="img/logoblack.png" class="logo" alt=""></a>
+                <button class="burger" onclick='document.querySelector("#navbar").classList.toggle("nav-active");'>
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+           <div> <ul id="navbar">
+                <li><a  href="index.html">accueil</a></li>
+                <li ><a class="active" href="shop.html">shop</a></li>
+                <li ><a  href="contact.html">contact</a></li>
+                <li><a  href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+
+            </ul></div>
+        
+    </section>
+  
+    
+   <section id="prodetails">
+    <div class="container">
+<i class="fa-solid fa-arrow-left" onclick="history.back()"></i>
+  <div class="product">
+    <div class="product-image" id="productImage">
+      <!-- Default product image -->
+      <img src="img/black.jpg" alt="Product" id="mainImage">
+      <div class="color-options">
+        <label>
+          <input type="radio" name="color" value="black" checked>
+          <span class="color-option red"></span>
+        </label>
+        <label>
+          <input type="radio" name="color" value="maroon">
+          <span class="color-option blue"></span>
+        </label>
+        <label>
+          <input type="radio" name="color" value="gray">
+          <span class="color-option green"></span>
+        </label>
+      </div>
+    </div>
+    <div class="product-info">
+      <h1>Papillon classic</h1>
+      <h3>Prix: <span>3500da</span></h3>
+      <div class="pointure">
+    <select>
+        <option>pointure</option>
+        <option class="A">39</option>
+        <option class="A">40</option>
+        <option class="A">41</option>
+        <option class="A">42</option>
+        <option class="A">43</option>
+        <option class="A">44</option>
+    </select>    
+    </div>
+      <div id="putbtn"><input type="number" value="1" min="1" max="9" class="pronum">
+      <button>ajouter au panier</button></div>
+      <h2>details:</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat praesentium consequatur laboriosam dolore asperiores adipisci iusto maiores consequuntur tenetur, esse modi aliquam quaerat accusamus iure minus quam commodi tempore. Adipisci.</p>
+    </div>
+  </div>
+</div>
+   </section>
+    <section id="banner">
+        <h2>إستفد الآن من تخفيضات تصل إلى <span>%70  </span></h2>
+    </section>
+    <section id="social">
+
+    </section>
+     <section id="footer">
+
+<div>
+    <h1>informations:</h1>
+    
+    <a href="quiSommesNous.html">Qui Sommes-Nous.</a><a href="methodeDePaiement.html">Methode de paiement.</a><a href="livraison.html">Service De Livraison.</a>
+</div>
+<div>
+    <h1>politique:</h1>
+    <a href="conditions.html">Termes et conditions.</a><a href="quiSommesNous.html">aide.</a>
+</div>
+<div>
+<h1>contact:</h1>
+<a href="tel:0549609124"><i class="fa-solid fa-phone">:</i>0549609124</a><a href="mailto: walidwalidwb23@gmail.com"><i class="fa-solid fa-envelope">:</i>walidwalidwb23@gmail.com</a>
+</div>
+<div>
+    <img src="img/logowhite.png" alt="">
+</div>
+    </section>
+    <script src="script.js"></script>
+</body>
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+<script type="module">
+  const firebaseConfig = {
+    apiKey: "AIzaSyDFo7KYOySMzR70zUftjUsA4UkjYCK9PaE",
+    authDomain: "beny-comf.firebaseapp.com",
+    projectId: "beny-comf",
+    storageBucket: "beny-comf.appspot.com",
+    messagingSenderId: "409498301906",
+    appId: "1:409498301906:web:5dc9319dd2868f9f3d040b"
+  };
+
+  const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore(app);
+
+
+const id = window.location.search.slice(4)
+console.log(id)
+const doc = await db.collection('products').doc(id).get();
+const data = doc.data();
+
+let colors = [];
+  Object.entries(data.colors).forEach(col => colors.push(`<label>
+          <input type="radio" name="color" value="${col[0]}" onchange="change(this, '${col[1]}')">
+          <span class="color-option ${col[0]}"></span>
+        </label>`))
+    
+document.querySelector('.product').innerHTML = `
+
+    <div class="product-image" id="productImage">
+      <!-- Default product image -->
+      <img src="${data.image}" alt="Product" id="mainImage">
+      <div class="color-options">
+        ${colors.join('')}
+      </div>
+    </div>
+    <div class="product-info">
+      <h1>${data.name}</h1>
+      <h2>${data.marque}</h2>
+      <h3>Prix: <span>${data.prix}Da</span></h3>
+      <div class="pointure">
+    <select>
+        <option>pointure</option>
+        ${Object.entries(data.pointures).map(pointure => (`<option value="${pointure[0]}" class="${pointure[1]? "A": "B"}" ${pointure[1]? "": "disabled"} >${pointure[0]}</option>`))}
+    </select>    
+    </div>
+      <div id="putbtn">
+      <button onclick='add(${JSON.stringify(data)})'>ajouter au panier</button></div>
+      <h2>details:</h2>
+      <p>${data.description}</p>
+    </div>
+  </div>`
+  document.querySelector('.loading').style.display = 'none';
+
+</script>
+</html>

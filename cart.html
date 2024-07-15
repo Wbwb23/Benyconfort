@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beny Confort</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="icon" type="image/png" href="img/2logo.png">
+</head>
+<body>
+  
+    
+     <section id="header">
+        <a href="index.html"><img src="img/logoblack.png" class="logo" alt=""></a>
+         <button class="burger" onclick='document.querySelector("#navbar").classList.toggle("nav-active");'>
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+           <div> <ul id="navbar">
+                <li><a  href="index.html">accueil</a></li>
+                <li ><a  href="shop.html">shop</a></li>
+                <li ><a  href="contact.html">contact</a></li>
+                <li><a class="active" href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+
+            </ul></div>
+        
+    </section>
+    <section id="cartee">
+
+        <h1>mon panier:</h1>
+        <table width="100%">
+        <thead>
+            <tr>
+                <td>supprimer</td>
+                <td>image</td>
+                <td>modele</td>
+                <td>pointure</td>
+                <td>prix de modele</td>
+            </tr>
+        </thead>
+    <tbody>
+    </tbody>
+    </table>
+    <button class="retourner" onclick="history.back()">Retourner</button>
+    <button class="commander" onclick="document.querySelector('.modal').style.display = 'grid'">commander</button>
+    </section>
+    <div class="modal">
+        <div class="bg" onclick="document.querySelector('.modal').style.display = 'none'"></div>
+        <div class="content">
+           <div class="up"> <h1>commande</h1> <i class="fa-solid fa-xmark" onclick="document.querySelector('.modal').style.display = 'none'"></i></div>
+            <form action="" class="form">
+                <label for="nom">nom: <input id="nom" type="text" required></label>
+                <label for="prenom">prenom: <input id="prenom" type="text" required></label>
+                <label for="telephone">telephone: <input id="telephone" type="tel" required></label>
+                  <label for="wilaya"> wilaya:  <select id="wilaya" name="wilaya" required>
+				<option value = "">----</option>
+    <option value="Adrar">Adrar</option>
+    <option value="Chlef">Chlef</option>
+    <option value="Laghouat">Laghouat</option>
+    <option value="Oum El Bouaghi">Oum El Bouaghi</option>
+    <option value="Batna">Batna</option>
+    <option value="Bejaia">Bejaia</option>
+    <option value="Biskra">Biskra</option>
+    <option value="Bechar">Bechar</option>
+    <option value="Blida">Blida</option>
+    <option value="Bouira">Bouira</option>
+    <option value="Tamanrasset">Tamanrasset</option>
+    <option value="Tebessa">Tebessa</option>
+    <option value="Tlemcen">Tlemcen</option>
+    <option value="Tiaret">Tiaret</option>
+    <option value="Tizi Ouzou">Tizi Ouzou</option>
+    <option value="Alger">Alger</option>
+    <option value="Djelfa">Djelfa</option>
+    <option value="Jijel">Jijel</option>
+    <option value="Setif">Setif</option>
+    <option value="Saida">Saida</option>
+    <option value="Skikda">Skikda</option>
+    <option value="Sidi Bel Abbes">Sidi Bel Abbes</option>
+    <option value="Annaba">Annaba</option>
+    <option value="Guelma">Guelma</option>
+    <option value="Constantine">Constantine</option>
+    <option value="Medea">Medea</option>
+    <option value="Mostaganem">Mostaganem</option>
+    <option value="MSila">MSila</option>
+    <option value="Mascara">Mascara</option>
+    <option value="Ouargla">Ouargla</option>
+    <option value="Oran">Oran</option>
+    <option value="El Bayadh">El Bayadh</option>
+    <option value="Illizi">Illizi</option>
+    <option value="Bordj Bou Arreridj">Bordj Bou Arreridj</option>
+    <option value="Boumerdes">Boumerdes</option>
+    <option value="El Tarf">El Tarf</option>
+    <option value="Tindouf">Tindouf</option>
+    <option value="Tissemsilt">Tissemsilt</option>
+    <option value="El Oued">El Oued</option>
+    <option value="Khenchela">Khenchela</option>
+    <option value="Souk Ahras">Souk Ahras</option>
+    <option value="Tipaza">Tipaza</option>
+    <option value="Mila">Mila</option>
+    <option value="Ain Defla">Ain Defla</option>
+    <option value="Naama">Naama</option>
+    <option value="Ain Temouchent">Ain Temouchent</option>
+    <option value="Ghardaia">Ghardaia</option>
+    <option value="Relizane">Relizane</option>
+
+			</select></label>
+          <label for="adresse">commune et adresse de Livraison: <input type="text" id="adresse" required></label>
+
+                <button type="submit">envoyer</button>
+            </form>
+        </div>
+
+    </div>
+ <section id="footer">
+
+<div>
+    <h1>informations:</h1>
+    
+    <a href="quiSommesNous.html">Qui Sommes-Nous.</a><a href="methodeDePaiement.html">Methode de paiement.</a><a href="livraison.html">Service De Livraison.</a>
+</div>
+<div>
+    <h1>politique:</h1>
+    <a href="conditions.html">Termes et conditions.</a><a href="quiSommesNous.html">aide.</a>
+</div>
+<div>
+<h1>contact:</h1>
+<a href="tel:0549609124"><i class="fa-solid fa-phone">:</i>0549609124</a><a href="mailto: walidwalidwb23@gmail.com"><i class="fa-solid fa-envelope">:</i>walidwalidwb23@gmail.com</a>
+</div>
+<div class="img">
+    <img src="img/logowhite.png" alt="">
+</div>
+    </section>
+</body>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+    <script src="script.js"></script>
+    <script>
+           (function(){
+      emailjs.init({
+        publicKey: "YYOC_Bg_laf81EGVv",
+      });
+   })();
+
+        let panier = localStorage["panier"];
+        if(panier) panier = JSON.parse(panier);
+        panier?.map((product, i) => {
+            document.querySelector("tbody").innerHTML += `<tr id="_${i}">
+            <td><a href="#" onclick='supprimer(${i})' ><i class="fa-solid fa-trash"></i></a></td>
+            <td><img src="${product.image}" alt=""></td>
+            <td>${product.name}</td>
+            <td>${product.pointure}</td>
+            <td>${product.prix}Da</td>
+        </tr>`
+        })
+if(!panier || !panier[0]) document.querySelector('.commander').disabled=true;
+        function supprimer(index) {
+            let companier = panier.filter((produit, i) => i !== index)
+            localStorage["panier"] = JSON.stringify(companier);
+            document.querySelector(`#_${index}`).remove()
+            //alert(`Deleted`)
+            if(!companier || !companier[0]) {document.querySelector('.commander').disabled;
+            }
+        }
+
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            let number = document.querySelector("#telephone").value
+            if(!document.querySelector("#nom")?.value) return alert("veuillez entrer votre nom");
+            if(!document.querySelector("#prenom")?.value) return alert("veuillez entrer votre prenom");
+            if(!number || number.length != 10 || !number.startsWith("0") ) return alert("veuillez entrer votre numero de telephone");
+            if(!document.querySelector("#wilaya")?.value) return alert("veuillez entrer votre wilaya");
+            if(!document.querySelector("#adresse")?.value) return alert("veuillez entrer votre adresse");
+            document.querySelector("button").disabled = true;
+            document.querySelectorAll("table td:first-child").forEach(child => child.remove());
+            document.querySelectorAll("table img").forEach(child => child.width = 70);
+
+        var templateParams = {
+            nom: document.querySelector("#nom").value,
+            prenom: document.querySelector("#prenom").value,
+            number: document.querySelector("#telephone").value,
+            wilaya: document.querySelector("#wilaya").value,
+            adresse: document.querySelector("#adresse").value,
+
+            html: document.querySelector("table").innerHTML,
+        };
+
+        emailjs.send('service_qif11uf', 'template_pslt4hr', templateParams).then(
+            (response) => {
+                alert("Sent!")
+                localStorage.removeItem('panier');
+                document.querySelector("table").innerHTML = "";
+                document.querySelector(".modal").style.display = "none";
+                console.log('SUCCESS!', response.status, response.text);
+                document.querySelector("button").disabled = false;
+            },
+            (error) => {
+                console.log('FAILED...', error);
+                document.querySelector("button").disabled = false;
+            },
+            
+        );
+    })
+        
+    </script>
+
+</html>
