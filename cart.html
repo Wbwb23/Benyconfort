@@ -111,11 +111,20 @@
 			</select></label>
           <label for="adresse">commune et adresse de Livraison: <input type="text" id="adresse" required></label>
 
-                <button type="submit">envoyer</button>
+                <button type="submit" onclick="document.querySelector('.modal2').style.display = 'grid'">envoyer</button>
             </form>
         </div>
 
     </div>
+    <div class="modal2">
+        <div class="bg" onclick="document.querySelector('.modal2').style.display = 'none'"></div>
+        <div class="content">
+           <div class="up"><i class="fa-solid fa-xmark" onclick="document.querySelector('.modal2').style.display = 'none'"></i></div>
+             <div class="success-animation">
+<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" /><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" /></svg>
+</div>
+<h3>تم إرسال الطلب بنجاح. <br>سيتم الإتصال بك عبر الرقم الهاتفي الخاص بك لتأكيد الطلب خلال أقل من 24h</h3></div>
+          </div>
  <section id="footer">
 
 <div>
@@ -161,6 +170,7 @@
 if(!panier || !panier[0]) document.querySelector('.commander').disabled=true;
         function supprimer(index) {
             let companier = panier.filter((produit, i) => i !== index)
+            panier=companier;
             localStorage["panier"] = JSON.stringify(companier);
             document.querySelector(`#_${index}`).remove()
             //alert(`Deleted`)
@@ -192,7 +202,7 @@ if(!panier || !panier[0]) document.querySelector('.commander').disabled=true;
 
         emailjs.send('service_qif11uf', 'template_pslt4hr', templateParams).then(
             (response) => {
-                alert("Sent!")
+                onclick="document.querySelector('.modal2').style.display = 'grid'"
                 localStorage.removeItem('panier');
                 document.querySelector("table").innerHTML = "";
                 document.querySelector(".modal").style.display = "none";
@@ -200,7 +210,7 @@ if(!panier || !panier[0]) document.querySelector('.commander').disabled=true;
                 document.querySelector("button").disabled = false;
             },
             (error) => {
-                console.log('FAILED...', error);
+                console.log('erreur...', error);
                 document.querySelector("button").disabled = false;
             },
             
