@@ -71,7 +71,7 @@
     </select>    
     </div>
       <div id="putbtn"><input type="number" value="1" min="1" max="9" class="pronum">
-      <button>ajouter au panier</button></div>
+      <button onclick="document.querySelector('.modal3').style.display = 'grid'">ajouter au panier</button></div>
       <h2>details:</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat praesentium consequatur laboriosam dolore asperiores adipisci iusto maiores consequuntur tenetur, esse modi aliquam quaerat accusamus iure minus quam commodi tempore. Adipisci.</p>
     </div>
@@ -81,9 +81,15 @@
     <section id="banner">
         <h2>إستفد الآن من تخفيضات تصل إلى <span>%70  </span></h2>
     </section>
-    <section id="social">
+<div class="modal3">
+        <div class="bg" onclick="document.querySelector('.modal3').style.display = 'none'"></div>
+        <div class="content">
+           <div class="up"><i class="fa-solid fa-xmark" onclick="document.querySelector('.modal3').style.display = 'none'"></i></div>
+   <h3>لقد تمت إضافة طلبك إلى صندوق المبيعات بنجاح</h3>       
+    <div><button onclick="location.href='cart.html';">aller au panier</button></div>   
+</div>
 
-    </section>
+         </div>
      <section id="footer">
 
 <div>
@@ -99,8 +105,9 @@
 <h1>contact:</h1>
 <a href="tel:0549609124"><i class="fa-solid fa-phone">:</i>0549609124</a><a href="mailto: walidwalidwb23@gmail.com"><i class="fa-solid fa-envelope">:</i>walidwalidwb23@gmail.com</a>
 </div><div>
-    <img src="img/logowhite.png" alt="">
+    <img src="logowhite.png" alt="">
 </div>
+
     </section>
     <script src="script.js"></script>
 </body>
@@ -151,7 +158,7 @@ document.querySelector('.product').innerHTML = `
     </select>    
     </div>
       <div id="putbtn">
-      <button onclick='add(${JSON.stringify(data)})'>ajouter au panier</button></div>
+      <button onclick='add(${JSON.stringify(data)})' onclick=' document.querySelector('.success-animation').style.display = 'content''>ajouter au panier</button></div>
       <h2>details:</h2>
       <p>${data.description}</p>
     </div>
