@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     option.addEventListener("change", function () {
       // Update image based on selected color
       let color = this.value;
-      let imagePath = `img/${color}.jpg`;
+      let imagePath = `${color}.jpg`;
       mainImage.src = imagePath;
 
       // Update selected state for color options
@@ -34,8 +34,8 @@ function add(data) {
     if(opt.checked) colorSelected = opt.value;
   });
   let pointure = document.querySelector("select").value;
-  if(!pointure || isNaN(+pointure)) return alert("Please select a pointure");
-  if(!colorSelected) return alert("Please select a color");
+  if(!pointure || isNaN(+pointure)) return alert("veuillez selectionner une pointure");
+  if(!colorSelected) return alert("veuillez choisir une couleur");
   let panier = localStorage["panier"]
   if(panier) {
     panier = JSON.parse(panier);
@@ -52,5 +52,6 @@ function add(data) {
     });
     localStorage["panier"] = JSON.stringify(panier);
   }
-  alert("Added to panier")
+
+  document.querySelector('.modal3').style.display = 'grid'
 }
