@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-<link rel="icon" type="image/png" href="=2logo.png">
+<link rel="icon" type="image/png" href="2logo.png">
 </head>
 <body>
     <section id="header">
@@ -31,15 +31,15 @@
     <div class="loading">
         <i class="fa-solid fa-spinner" style="font-size: 30px; color: #1E2A47; width: 50px; height: 50px;"></i>
     </div>
-    <section id="produits"><h1>nos Chaussures</h1>
+    <section id="produits"><h3 style="color: #606063;padding-bottom: 5px;">Nos Chaussures:</h3>
         <div class="pro_container">
          
         </div>
     </section>
     <section id="banner">
-        <h2>إستفد الآن من تخفيضات تصل إلى <span>%70  </span></h2>
+        <h2>إستفد الآن من تخفيضات تصل إلى <span>%50  </span></h2>
     </section>
-    <section id="produits"><h1>nos Chaussures</h1>
+    <section id="produits"><h3 style="color: #606063;padding-bottom: 5px;">Nos Promo:</h3>
         <div class="promo_container">
             
 
@@ -90,15 +90,16 @@ querySnapshot.forEach((doc) => {
                 <h5>${data.name}</h5>
                 <h4><span>${data.prix}Da</span> ${data.promo}da</h4>
             </div>
-            <BUtton>VOIR PLUS</BUtton>
+            
             </div>`;
 document.querySelector(".pro_container").innerHTML += ` <div class="pro"  onclick="window.location.href='sproduct.html?id=${doc.id}';">
                 <img src="${data.image}" alt="">
-                <div class="des"><span>${data.marque}</span>
+                <div class="des">
+                 ${data.promo? `<h4><span>${data.prix}Da</span> ${data.promo}da</h4>` : `<h4>${data.prix}Da</h4>`}
                 <h5>${data.name}</h5>
-                ${data.promo? `<h4><span>${data.prix}Da</span> ${data.promo}da</h4>` : `<h4>${data.prix}Da</h4>`}
+               
             </div>
-            <BUtton>VOIR PLUS</BUtton>
+           
             </div>`
 });
 document.querySelector('.loading').style.display = 'none';
